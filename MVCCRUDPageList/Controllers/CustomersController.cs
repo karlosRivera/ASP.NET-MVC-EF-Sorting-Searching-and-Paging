@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MVCCRUDPageList.Models;
+using PagedList;
 
 namespace MVCCRUDPageList.Controllers
 {
@@ -15,9 +16,15 @@ namespace MVCCRUDPageList.Controllers
         private CustomersEntities db = new CustomersEntities();
 
         // GET: Customers
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            return View(db.Customers.ToList());
+            var customer = db.Customers.OrderBy(s => s.CompanyName);
+
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+            return View(customer.ToPagedList(pageNumber, pageSize));
+
+            //return View(db.Customers.ToList());
         }
 
         // GET: Customers/Details/5

@@ -1,4 +1,9 @@
-﻿@model IEnumerable<MVCCRUDPageList.Models.Customer>
+﻿@model PagedList.IPagedList<MVCCRUDPageList.Models.Customer>
+@using PagedList.Mvc;
+
+@section csssection {
+    <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+}
 
 @{
     ViewBag.Title = "Index";
@@ -12,16 +17,16 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.CompanyName)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().CompanyName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ContactName)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().ContactName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ContactTitle)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().ContactTitle)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Address)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().Address)
         </th>
  
 
@@ -53,3 +58,9 @@
 }
 
 </table>
+
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+    
