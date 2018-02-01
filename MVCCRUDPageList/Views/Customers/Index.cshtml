@@ -8,59 +8,68 @@
 @{
     ViewBag.Title = "Index";
 }
+<div class="row">
+    <h2>List of Customers</h2>
+</div>
 
-<h2>Index</h2>
+<div class="row">
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+</div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstOrDefault().CompanyName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstOrDefault().ContactName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstOrDefault().ContactTitle)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstOrDefault().Address)
-        </th>
- 
-
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CompanyName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ContactName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ContactTitle)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address)
-        </td>
+    <div class="row table-responsive">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().CompanyName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().ContactName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().ContactTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Address)
+            </th>
 
 
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CustomerID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CustomerID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CustomerID })
-        </td>
-    </tr>
-}
+            <th class="text-center">Action</th>
+        </tr>
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompanyName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContactName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContactTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
 
-<br />
-Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
-@Html.PagedListPager(Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
-    
+                <td class="text-center">
+                    @Html.ActionLink("Edit", "Edit", new { id = item.CustomerID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.CustomerID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CustomerID })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+        <div class="row">
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount / (Total Records:  @Model.TotalItemCount)
+</div>
+
+<div class="row">
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+</div>
