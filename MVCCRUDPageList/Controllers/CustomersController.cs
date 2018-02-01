@@ -22,6 +22,8 @@ namespace MVCCRUDPageList.Controllers
 
             int pageSize = 5;
             int pageNumber = (page ?? 1);
+            ViewBag.CurrentPage = pageNumber;
+
             return View(customer.ToPagedList(pageNumber, pageSize));
 
             //return View(db.Customers.ToList());
@@ -66,7 +68,7 @@ namespace MVCCRUDPageList.Controllers
         }
 
         // GET: Customers/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult Edit(string id, int page)
         {
             if (id == null)
             {
@@ -77,6 +79,7 @@ namespace MVCCRUDPageList.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.CurrentPage = page;
             return View(customer);
         }
 
@@ -85,13 +88,13 @@ namespace MVCCRUDPageList.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CustomerID,CompanyName,ContactName,ContactTitle,Address,City,Region,PostalCode,Country,Phone,Fax")] Customer customer)
+        public ActionResult Edit([Bind(Include = "CustomerID,CompanyName,ContactName,ContactTitle,Address,City,Region,PostalCode,Country,Phone,Fax")] Customer customer, int page)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(customer).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { page = page });
             }
             return View(customer);
         }

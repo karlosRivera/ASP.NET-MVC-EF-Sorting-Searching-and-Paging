@@ -175,6 +175,7 @@
       <DependentUpon>CustomerCtx.edmx</DependentUpon>
       <LastGenOutput>CustomerCtx.cs</LastGenOutput>
     </Content>
+    <Content Include="Notes.txt" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\CustomerCtx.edmx">

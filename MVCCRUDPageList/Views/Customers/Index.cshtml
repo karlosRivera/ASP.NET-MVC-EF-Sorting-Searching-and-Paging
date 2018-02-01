@@ -3,6 +3,13 @@
 
 @section csssection {
     <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+
+    <style>
+        .form-gap {
+            margin-bottom: 15px;
+        }
+    </style>
 }
 
 @{
@@ -17,56 +24,100 @@
         @Html.ActionLink("Create New", "Create")
     </p>
 </div>
+@*<p>
+    <div class="row">
 
-    <div class="row table-responsive">
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstOrDefault().CompanyName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstOrDefault().ContactName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstOrDefault().ContactTitle)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstOrDefault().Address)
-            </th>
+        <div class="col-xs-6 col-md-4 col-md-6">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" id="txtSearch" />
+                    <div class="input-group-btn">
+                        <button class="btn btn-primary" type="submit">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
 
+            <div class="input-group">
+                <!-- USE TWITTER TYPEAHEAD JSON WITH API TO SEARCH -->
+                <input class="form-control" id="system-search" name="q" placeholder="Search for" required>
+                <span class="input-group-btn col-md-6">
+                    <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+                </span>
+            </div>
 
-            <th class="text-center">Action</th>
-        </tr>
+        </div>
+    </p>
+*@
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CompanyName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ContactName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ContactTitle)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Address)
-                </td>
+<div class="row form-gap">
+    <div class="input-group col-xs-5 col-lg-4">
 
+        <input type="text" class="form-control">
 
-                <td class="text-center">
-                    @Html.ActionLink("Edit", "Edit", new { id = item.CustomerID }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.CustomerID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.CustomerID })
-                </td>
-            </tr>
-        }
+        <div class="input-group-btn">
+            <button type="button" class="btn btn-search btn-info">
+                <span class="glyphicon glyphicon-search"></span>
+                <span class="label-icon">Search</span>
+            </button>
+        </div>
+    </div>
 
-    </table>
+    <div class="input-group col-xs-5 col-lg-8">
+    </div>
 </div>
 
-        <div class="row">
+<div class="row">
+    <div class="table-responsive">
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().CompanyName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().ContactName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().ContactTitle)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().Address)
+                </th>
+
+
+                <th class="text-center">Action</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CompanyName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ContactName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ContactTitle)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>
+
+
+                    <td class="text-center">
+                        @Html.ActionLink("Edit", "Edit", new { id = item.CustomerID, page = ViewBag.CurrentPage }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.CustomerID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.CustomerID, page = ViewBag.CurrentPage })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
+
+<div class="row">
     Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount / (Total Records:  @Model.TotalItemCount)
 </div>
 

@@ -1,0 +1,3 @@
+﻿
+the below link show how to persist current page position in grid when edit records.
+https://stackoverflow.com/questions/25271610/how-to-remain-retain-on-the-same-page-when-using-pagedlist-mvc/25275968#25275968
