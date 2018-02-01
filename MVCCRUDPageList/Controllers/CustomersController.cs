@@ -18,47 +18,59 @@ namespace MVCCRUDPageList.Controllers
         // GET: Customers
         public ActionResult Index(int? page, string SortColumn, string CurrentSort)
         {
-            var customer= (object) null; // db.Customers; // .OrderBy(s => s.CompanyName);
+            var customer = (object) null; 
 
             int pageSize = 5;
             int pageNumber = (page ?? 1);
             ViewBag.CurrentPage = pageNumber;
             SortColumn = String.IsNullOrEmpty(SortColumn) ? "CompanyName" : SortColumn;
-            ViewBag.CurrentSort = SortColumn;  
-
+            ViewBag.CurrentSort = SortColumn;
+            ViewBag.OldSort = CurrentSort;
 
             switch (SortColumn)
             {
                 case "CompanyName":
                     if (SortColumn.Equals(CurrentSort))
+                    {
                         customer = db.Customers.OrderByDescending(m => m.CompanyName).ToPagedList(pageNumber, pageSize);
+                        ViewBag.CurrentSort = "";
+                    }
                     else
                         customer = db.Customers.OrderBy(m => m.CompanyName).ToPagedList(pageNumber, pageSize);
                     break;
 
                 case "ContactName":
                     if (SortColumn.Equals(CurrentSort))
+                    {
                         customer = db.Customers.OrderByDescending(m => m.ContactName).ToPagedList(pageNumber, pageSize);
+                        ViewBag.CurrentSort = "";
+                    }
                     else
                         customer = db.Customers.OrderBy(m => m.ContactName).ToPagedList(pageNumber, pageSize);
                     break;
 
                 case "ContactTitle":
                     if (SortColumn.Equals(CurrentSort))
+                    {
                         customer = db.Customers.OrderByDescending(m => m.ContactTitle).ToPagedList(pageNumber, pageSize);
+                        ViewBag.CurrentSort = "";
+                    }
                     else
                         customer = db.Customers.OrderBy(m => m.ContactTitle).ToPagedList(pageNumber, pageSize);
                     break;
 
                 case "Address":
                     if (SortColumn.Equals(CurrentSort))
+                    {
                         customer = db.Customers.OrderByDescending(m => m.Address).ToPagedList(pageNumber, pageSize);
+                        ViewBag.CurrentSort = "";
+                    }
                     else
                         customer = db.Customers.OrderBy(m => m.Address).ToPagedList(pageNumber, pageSize);
                     break;
 
                 case "Default":
-                        customer = db.Customers.OrderBy(m => m.CompanyName).ToPagedList(pageNumber, pageSize);
+                    customer = db.Customers.OrderBy(m => m.CompanyName).ToPagedList(pageNumber, pageSize);
                     break;
             }
 

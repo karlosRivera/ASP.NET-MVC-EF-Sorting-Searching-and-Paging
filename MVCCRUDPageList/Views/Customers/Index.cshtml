@@ -74,26 +74,26 @@
                 <th>
                     @*@Html.DisplayNameFor(model => model.FirstOrDefault().CompanyName)*@
 
-                    @Html.ActionLink("Company", "Index",
-                             new { SortColumn = "CompanyName", CurrentSort = ViewBag.CurrentSort })
+                    @Html.ActionLink("Company", "Index", 
+                                      new { page = ViewBag.CurrentPage, SortColumn = "CompanyName", CurrentSort = ViewBag.CurrentSort })
                 </th>
 
                 <th>
                     @*@Html.DisplayNameFor(model => model.FirstOrDefault().ContactName)*@
-                    @Html.ActionLink("Name", "Index",
-                             new { SortColumn = "ContactName", CurrentSort = ViewBag.CurrentSort })
+                    @Html.ActionLink("Name", "Index", 
+                                     new { page = ViewBag.CurrentPage, SortColumn = "ContactName", CurrentSort = ViewBag.CurrentSort })
                 </th>
 
                 <th>
                     @*@Html.DisplayNameFor(model => model.FirstOrDefault().ContactTitle)*@
                     @Html.ActionLink("Title", "Index",
-                             new { SortColumn = "ContactTitle", CurrentSort = ViewBag.CurrentSort })
+                                     new { page = ViewBag.CurrentPage, SortColumn = "ContactTitle", CurrentSort = ViewBag.CurrentSort })
                 </th>
 
                 <th>
                     @*@Html.DisplayNameFor(model => model.FirstOrDefault().Address)*@
-                    @Html.ActionLink("Address", "Index",
-                            new { SortColumn = "Address", CurrentSort = ViewBag.CurrentSort })
+                    @Html.ActionLink("Address", "Index", 
+                                     new { page = ViewBag.CurrentPage, SortColumn = "Address", CurrentSort = ViewBag.CurrentSort })
                 </th>
 
 
@@ -119,7 +119,7 @@
 
                     <td class="text-center">
                         @Html.ActionLink("Edit", "Edit", new { id = item.CustomerID, page = ViewBag.CurrentPage }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.CustomerID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.CustomerID, page = ViewBag.CurrentPage }) |
                         @Html.ActionLink("Delete", "Delete", new { id = item.CustomerID, page = ViewBag.CurrentPage })
                     </td>
                 </tr>
@@ -134,5 +134,5 @@
 </div>
 
 <div class="row">
-    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, SortColumn = ViewBag.CurrentSort, CurrentSort = ViewBag.OldSort }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
 </div>
