@@ -23,7 +23,7 @@ namespace MVCCRUDPageList.Models
         [Display(Name = "Name")]
         public string ContactName { get; set; }
 
-        [Display(Name = "Titile")]
+        [Display(Name = "Title")]
         public string ContactTitle { get; set; }
 
         public string Address { get; set; }

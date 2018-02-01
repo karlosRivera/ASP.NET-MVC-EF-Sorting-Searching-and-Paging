@@ -72,16 +72,28 @@
         <table class="table">
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.FirstOrDefault().CompanyName)
+                    @*@Html.DisplayNameFor(model => model.FirstOrDefault().CompanyName)*@
+
+                    @Html.ActionLink("Company", "Index",
+                             new { SortColumn = "CompanyName", CurrentSort = ViewBag.CurrentSort })
                 </th>
+
                 <th>
-                    @Html.DisplayNameFor(model => model.FirstOrDefault().ContactName)
+                    @*@Html.DisplayNameFor(model => model.FirstOrDefault().ContactName)*@
+                    @Html.ActionLink("Name", "Index",
+                             new { SortColumn = "ContactName", CurrentSort = ViewBag.CurrentSort })
                 </th>
+
                 <th>
-                    @Html.DisplayNameFor(model => model.FirstOrDefault().ContactTitle)
+                    @*@Html.DisplayNameFor(model => model.FirstOrDefault().ContactTitle)*@
+                    @Html.ActionLink("Title", "Index",
+                             new { SortColumn = "ContactTitle", CurrentSort = ViewBag.CurrentSort })
                 </th>
+
                 <th>
-                    @Html.DisplayNameFor(model => model.FirstOrDefault().Address)
+                    @*@Html.DisplayNameFor(model => model.FirstOrDefault().Address)*@
+                    @Html.ActionLink("Address", "Index",
+                            new { SortColumn = "Address", CurrentSort = ViewBag.CurrentSort })
                 </th>
 
 
