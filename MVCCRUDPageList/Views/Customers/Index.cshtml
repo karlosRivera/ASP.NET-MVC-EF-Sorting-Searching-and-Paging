@@ -22,14 +22,13 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 
-
+@using (Html.BeginForm("Index", "Customers", new { page = ViewBag.CurrentPage, SortColumn = ViewBag.CurrentSort, CurrentSort = ViewBag.OldSort }))
+{
 <div class="row form-gap">
     <div class="input-group col-xs-5 col-lg-4">
-
-        <input type="text" class="form-control">
-
+       @Html.TextBox("SearchText", null, new { @class= "form-control"})
         <div class="input-group-btn">
-            <button type="button" class="btn btn-search btn-info">
+            <button type="submit" class="btn btn-search btn-info" id="submit">
                 <span class="glyphicon glyphicon-search"></span>
                 <span class="label-icon">Search</span>
             </button>
@@ -39,7 +38,7 @@
     <div class="input-group col-xs-5 col-lg-8">
     </div>
 </div>
-
+}
 
 
 <div class="table-responsive">
@@ -49,25 +48,25 @@
                 @*@Html.DisplayNameFor(model => model.FirstOrDefault().CompanyName)*@
 
                 @Html.ActionLink("Company", "Index",
-                                      new { page = ViewBag.CurrentPage, SortColumn = "CompanyName", CurrentSort = ViewBag.CurrentSort })
+                                                        new { page = ViewBag.CurrentPage, SortColumn = "CompanyName", CurrentSort = ViewBag.CurrentSort, SearchText = ViewBag.SearchText })
             </th>
 
             <th>
                 @*@Html.DisplayNameFor(model => model.FirstOrDefault().ContactName)*@
                 @Html.ActionLink("Name", "Index",
-                                     new { page = ViewBag.CurrentPage, SortColumn = "ContactName", CurrentSort = ViewBag.CurrentSort })
+                                              new { page = ViewBag.CurrentPage, SortColumn = "ContactName", CurrentSort = ViewBag.CurrentSort, SearchText = ViewBag.SearchText })
             </th>
 
             <th>
                 @*@Html.DisplayNameFor(model => model.FirstOrDefault().ContactTitle)*@
                 @Html.ActionLink("Title", "Index",
-                                     new { page = ViewBag.CurrentPage, SortColumn = "ContactTitle", CurrentSort = ViewBag.CurrentSort })
+                                              new { page = ViewBag.CurrentPage, SortColumn = "ContactTitle", CurrentSort = ViewBag.CurrentSort, SearchText = ViewBag.SearchText })
             </th>
 
             <th>
                 @*@Html.DisplayNameFor(model => model.FirstOrDefault().Address)*@
                 @Html.ActionLink("Address", "Index",
-                                     new { page = ViewBag.CurrentPage, SortColumn = "Address", CurrentSort = ViewBag.CurrentSort })
+                                              new { page = ViewBag.CurrentPage, SortColumn = "Address", CurrentSort = ViewBag.CurrentSort, SearchText = ViewBag.SearchText })
             </th>
 
 
@@ -105,4 +104,4 @@
 
     Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount / (Total Records:  @Model.TotalItemCount)
 
-    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, SortColumn = ViewBag.CurrentSort, CurrentSort = ViewBag.OldSort }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, SortColumn = ViewBag.CurrentSort, CurrentSort = ViewBag.OldSort, SearchText = ViewBag.SearchText }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
