@@ -13,28 +13,40 @@ namespace MVCCRUDPageList
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //routes.MapRoute(
+            //    name: null,
+            //    url: "{controller}/{action}/{page}/{SortColumn}/{CurrentSort}",
+            //    defaults: new
+            //    {
+            //        action = "Index",
+            //        page = UrlParameter.Optional,
+            //        SortColumn = UrlParameter.Optional,
+            //        CurrentSort = UrlParameter.Optional
+            //    }
+            //);
+
+            //routes.MapRoute(
+            //    name: null,
+            //    url: "{controller}/{action}/{page}/{id}",
+            //    defaults: new
+            //    {
+            //        controller = "Home",
+            //        action = "Index",
+            //        id = UrlParameter.Optional,
+            //        page = UrlParameter.Optional,
+            //    }
+            //);
+
             routes.MapRoute(
-                name: null,
+                name: "PageWithSort",
                 url: "{controller}/{action}/{page}/{SortColumn}/{CurrentSort}",
-                defaults: new
-                {
-                    action = "Index",
-                    page = UrlParameter.Optional,
-                    SortColumn = UrlParameter.Optional,
-                    CurrentSort = UrlParameter.Optional
-                }
+                defaults: new { action = "Index" }
             );
 
             routes.MapRoute(
-                name: null,
+                name: "PageWithId",
                 url: "{controller}/{action}/{page}/{id}",
-                defaults: new
-                {
-                    controller = "Home",
-                    action = "Index",
-                    id = UrlParameter.Optional,
-                    page = UrlParameter.Optional,
-                }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(

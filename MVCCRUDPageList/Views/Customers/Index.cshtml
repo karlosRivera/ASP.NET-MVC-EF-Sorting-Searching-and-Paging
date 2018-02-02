@@ -15,40 +15,13 @@
 @{
     ViewBag.Title = "Index";
 }
-<div class="row">
-    <h2>List of Customers</h2>
-</div>
 
-<div class="row">
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-</div>
-@*<p>
-    <div class="row">
+<h2>List of Customers</h2>
 
-        <div class="col-xs-6 col-md-4 col-md-6">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search" id="txtSearch" />
-                    <div class="input-group-btn">
-                        <button class="btn btn-primary" type="submit">
-                            <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                    </div>
-                </div>
-            </div>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
 
-            <div class="input-group">
-                <!-- USE TWITTER TYPEAHEAD JSON WITH API TO SEARCH -->
-                <input class="form-control" id="system-search" name="q" placeholder="Search for" required>
-                <span class="input-group-btn col-md-6">
-                    <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
-                </span>
-            </div>
-
-        </div>
-    </p>
-*@
 
 <div class="row form-gap">
     <div class="input-group col-xs-5 col-lg-4">
@@ -67,72 +40,69 @@
     </div>
 </div>
 
-<div class="row">
-    <div class="table-responsive">
-        <table class="table">
-            <tr>
-                <th>
-                    @*@Html.DisplayNameFor(model => model.FirstOrDefault().CompanyName)*@
 
-                    @Html.ActionLink("Company", "Index", 
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>
+                @*@Html.DisplayNameFor(model => model.FirstOrDefault().CompanyName)*@
+
+                @Html.ActionLink("Company", "Index",
                                       new { page = ViewBag.CurrentPage, SortColumn = "CompanyName", CurrentSort = ViewBag.CurrentSort })
-                </th>
+            </th>
 
-                <th>
-                    @*@Html.DisplayNameFor(model => model.FirstOrDefault().ContactName)*@
-                    @Html.ActionLink("Name", "Index", 
+            <th>
+                @*@Html.DisplayNameFor(model => model.FirstOrDefault().ContactName)*@
+                @Html.ActionLink("Name", "Index",
                                      new { page = ViewBag.CurrentPage, SortColumn = "ContactName", CurrentSort = ViewBag.CurrentSort })
-                </th>
+            </th>
 
-                <th>
-                    @*@Html.DisplayNameFor(model => model.FirstOrDefault().ContactTitle)*@
-                    @Html.ActionLink("Title", "Index",
+            <th>
+                @*@Html.DisplayNameFor(model => model.FirstOrDefault().ContactTitle)*@
+                @Html.ActionLink("Title", "Index",
                                      new { page = ViewBag.CurrentPage, SortColumn = "ContactTitle", CurrentSort = ViewBag.CurrentSort })
-                </th>
+            </th>
 
-                <th>
-                    @*@Html.DisplayNameFor(model => model.FirstOrDefault().Address)*@
-                    @Html.ActionLink("Address", "Index", 
+            <th>
+                @*@Html.DisplayNameFor(model => model.FirstOrDefault().Address)*@
+                @Html.ActionLink("Address", "Index",
                                      new { page = ViewBag.CurrentPage, SortColumn = "Address", CurrentSort = ViewBag.CurrentSort })
-                </th>
+            </th>
 
 
-                <th class="text-center">Action</th>
-            </tr>
+            <th class="text-center">Action</th>
+        </tr>
 
-            @foreach (var item in Model)
+        @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CompanyName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ContactName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ContactTitle)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Address)
-                    </td>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompanyName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContactName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContactTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
 
 
-                    <td class="text-center">
-                        @Html.ActionLink("Edit", "Edit", new { id = item.CustomerID, page = ViewBag.CurrentPage }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.CustomerID, page = ViewBag.CurrentPage }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.CustomerID, page = ViewBag.CurrentPage })
-                    </td>
-                </tr>
+                <td class="text-center">
+                    @Html.ActionLink("Edit", "Edit", new { id = item.CustomerID, page = ViewBag.CurrentPage }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.CustomerID, page = ViewBag.CurrentPage }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CustomerID, page = ViewBag.CurrentPage })
+                </td>
+            </tr>
             }
 
-        </table>
-    </div>
+    </table>
+
 </div>
 
-<div class="row">
     Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount / (Total Records:  @Model.TotalItemCount)
-</div>
 
-<div class="row">
     @Html.PagedListPager(Model, page => Url.Action("Index", new { page, SortColumn = ViewBag.CurrentSort, CurrentSort = ViewBag.OldSort }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
-</div>
