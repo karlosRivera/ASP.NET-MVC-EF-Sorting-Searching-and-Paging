@@ -15,7 +15,19 @@ namespace MVCCRUDPageList
 
             routes.MapRoute(
                 name: null,
-                url: "{controller}/{action}/{id}/{page}",
+                url: "{controller}/{action}/{page}/{SortColumn}/{CurrentSort}",
+                defaults: new
+                {
+                    action = "Index",
+                    page = UrlParameter.Optional,
+                    SortColumn = UrlParameter.Optional,
+                    CurrentSort = UrlParameter.Optional
+                }
+            );
+
+            routes.MapRoute(
+                name: null,
+                url: "{controller}/{action}/{page}/{id}",
                 defaults: new
                 {
                     controller = "Home",
@@ -24,17 +36,6 @@ namespace MVCCRUDPageList
                     page = UrlParameter.Optional,
                 }
             );
-
-            //routes.MapRoute(
-            //    name: null,
-            //    url: "Customers/{page}/{SortColumn}",
-            //    defaults: new
-            //    {
-            //        action = "Index",
-            //        page = UrlParameter.Optional,
-            //        SortColumn = UrlParameter.Optional
-            //    }
-            //);
 
             routes.MapRoute(
                 name: "Default",
