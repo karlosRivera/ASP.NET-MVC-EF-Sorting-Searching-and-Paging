@@ -46,7 +46,7 @@ namespace MVCCRUDPageList
             routes.MapRoute(
                 name: "PageWithId",
                 url: "{controller}/{action}/{page}/{id}",
-                defaults: new { controller = "Home", action = "Index", page = UrlParameter.Optional, id = UrlParameter.Optional }
+                defaults: new { controller = "Customers", action = "Edit", page = UrlParameter.Optional, id = UrlParameter.Optional }
             );
 
             routes.MapRoute(

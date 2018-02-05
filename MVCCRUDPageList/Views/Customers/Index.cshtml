@@ -59,8 +59,19 @@
             <th>
                 @*@Html.DisplayNameFor(model => model.FirstOrDefault().CompanyName)*@
 
-                @Html.ActionLink("Company", "Index",
-                new { page = ViewBag.CurrentPage, SortColumn = "CompanyName", CurrentSort = ViewBag.CurrentSort, SearchText = ViewBag.SearchText })
+                @*@Html.ActionLink("Company", "Index",
+                new { page = ViewBag.CurrentPage, SortColumn = "CompanyName", CurrentSort = ViewBag.CurrentSort, SearchText = ViewBag.SearchText })*@
+
+                @Html.RouteLink("Company", "PageWithSort",
+                new
+                {
+                    controller = "Customers",
+                    action = "Index",
+                    page = ViewBag.CurrentPage,
+                    SortColumn = "CompanyName",
+                    CurrentSort = ViewBag.CurrentSort,
+                    SearchText = ViewBag.SearchText
+                })
                 @if (ViewBag.OldSort == "CompanyName")
                 {
                     <i class="@className"></i>
@@ -69,8 +80,19 @@
 
             <th>
                 @*@Html.DisplayNameFor(model => model.FirstOrDefault().ContactName)*@
-                @Html.ActionLink("Name", "Index",
-                new { page = ViewBag.CurrentPage, SortColumn = "ContactName", CurrentSort = ViewBag.CurrentSort, SearchText = ViewBag.SearchText })
+                @*@Html.ActionLink("Name", "Index",
+                new { page = ViewBag.CurrentPage, SortColumn = "ContactName", CurrentSort = ViewBag.CurrentSort, SearchText = ViewBag.SearchText })*@
+
+                @Html.RouteLink("Name", "PageWithSort",
+                new
+                {
+                    controller = "Customers",
+                    action = "Index",
+                    page = ViewBag.CurrentPage,
+                    SortColumn = "ContactName",
+                    CurrentSort = ViewBag.CurrentSort,
+                    SearchText = ViewBag.SearchText
+                })
                 @if (ViewBag.OldSort == "ContactName")
                 {
                     <i class="@className"></i>
@@ -79,8 +101,19 @@
 
             <th>
                 @*@Html.DisplayNameFor(model => model.FirstOrDefault().ContactTitle)*@
-                @Html.ActionLink("Title", "Index",
-                new { page = ViewBag.CurrentPage, SortColumn = "ContactTitle", CurrentSort = ViewBag.CurrentSort, SearchText = ViewBag.SearchText })
+                @*@Html.ActionLink("Title", "Index",
+                new { page = ViewBag.CurrentPage, SortColumn = "ContactTitle", CurrentSort = ViewBag.CurrentSort, SearchText = ViewBag.SearchText })*@
+
+                @Html.RouteLink("Title", "PageWithSort",
+                new
+                {
+                    controller = "Customers",
+                    action = "Index",
+                    page = ViewBag.CurrentPage,
+                    SortColumn = "ContactTitle",
+                    CurrentSort = ViewBag.CurrentSort,
+                    SearchText = ViewBag.SearchText
+                })
                 @if (ViewBag.OldSort == "ContactTitle")
                 {
                     <i class="@className"></i>
@@ -89,8 +122,19 @@
 
             <th>
                 @*@Html.DisplayNameFor(model => model.FirstOrDefault().Address)*@
-                @Html.ActionLink("Address", "Index",
-                new { page = ViewBag.CurrentPage, SortColumn = "Address", CurrentSort = ViewBag.CurrentSort, SearchText = ViewBag.SearchText })
+                @*@Html.ActionLink("Address", "Index",
+                new { page = ViewBag.CurrentPage, SortColumn = "Address", CurrentSort = ViewBag.CurrentSort, SearchText = ViewBag.SearchText })*@
+
+                @Html.RouteLink("Address", "PageWithSort",
+                new
+                {
+                    controller = "Customers",
+                    action = "Index",
+                    page = ViewBag.CurrentPage,
+                    SortColumn = "Address",
+                    CurrentSort = ViewBag.CurrentSort,
+                    SearchText = ViewBag.SearchText
+                })
                 @if (ViewBag.OldSort == "Address")
                 {
                     <i class="@className"></i>
@@ -119,9 +163,39 @@
 
 
                 <td class="text-center">
-                    @Html.ActionLink("Edit", "Edit", new { id = item.CustomerID, page = ViewBag.CurrentPage }) |
+                    @*@Html.ActionLink("Edit", "Edit", new { id = item.CustomerID, page = ViewBag.CurrentPage }) |
                     @Html.ActionLink("Details", "Details", new { id = item.CustomerID, page = ViewBag.CurrentPage }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.CustomerID, page = ViewBag.CurrentPage })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CustomerID, page = ViewBag.CurrentPage })*@
+
+                    cust id @item.CustomerID
+                    @Html.RouteLink("Edit", "PageWithId",
+                    new
+                    {
+                        controller = "Customers",
+                        action = "Edit",
+                        id = item.CustomerID,
+                        page = ViewBag.CurrentPage
+                    }) |
+
+                    @Html.RouteLink("Details", "PageWithId",
+                    new
+                    {
+                        controller = "Customers",
+                        action = "Details",
+                        id = item.CustomerID,
+                        page = ViewBag.CurrentPage
+                    }) |
+
+                    @Html.RouteLink("Delete", "PageWithId",
+                    new
+                    {
+                        controller = "Customers",
+                        action = "Delete",
+                        id = item.CustomerID,
+                        page = ViewBag.CurrentPage
+                    })
+
+
                 </td>
             </tr>
         }

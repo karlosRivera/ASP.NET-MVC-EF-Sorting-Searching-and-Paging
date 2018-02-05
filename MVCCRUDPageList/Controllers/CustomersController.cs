@@ -23,10 +23,11 @@ namespace MVCCRUDPageList.Controllers
                             // select s;
                             select new CustomerDTO
                             {
+                                CustomerID = s.CustomerID,
                                 CompanyName = s.CompanyName,
                                 ContactName = s.ContactName,
                                 ContactTitle = s.ContactTitle,
-                                Address = s.Address,
+                                Address = s.Address
                             });
 
             int pageSize = 5;
@@ -118,7 +119,7 @@ namespace MVCCRUDPageList.Controllers
         }
 
         // GET: Customers/Details/5
-        public ActionResult Details(string id)
+        public ActionResult Details(string id, int page)
         {
             if (id == null)
             {
@@ -188,7 +189,7 @@ namespace MVCCRUDPageList.Controllers
         }
 
         // GET: Customers/Delete/5
-        public ActionResult Delete(string id)
+        public ActionResult Delete(string id, int page)
         {
             if (id == null)
             {
