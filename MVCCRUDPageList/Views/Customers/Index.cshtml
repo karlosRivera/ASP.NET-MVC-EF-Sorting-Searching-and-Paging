@@ -25,20 +25,20 @@
 
 @using (Html.BeginForm("Index", "Customers", new { page = ViewBag.CurrentPage, SortColumn = ViewBag.CurrentSort, CurrentSort = ViewBag.OldSort }))
 {
-<div class="row form-gap">
-    <div class="input-group col-xs-5 col-lg-4">
-       @Html.TextBox("SearchText", null, new { @class= "form-control"})
-        <div class="input-group-btn">
-            <button type="submit" class="btn btn-search btn-info" id="submit">
-                <span class="glyphicon glyphicon-search"></span>
-                <span class="label-icon">Search</span>
-            </button>
+    <div class="row form-gap">
+        <div class="input-group col-xs-5 col-lg-4">
+            @Html.TextBox("SearchText", null, new { @class = "form-control" })
+            <div class="input-group-btn">
+                <button type="submit" class="btn btn-search btn-info" id="submit">
+                    <span class="glyphicon glyphicon-search"></span>
+                    <span class="label-icon">Search</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="input-group col-xs-5 col-lg-8">
         </div>
     </div>
-
-    <div class="input-group col-xs-5 col-lg-8">
-    </div>
-</div>
 }
 
 @{
@@ -47,7 +47,7 @@
     {
         className = "glyphicon glyphicon-chevron-up";
     }
-    else
+    else if (ViewBag.SortOrder.Equals("desc"))
     {
         className = "glyphicon glyphicon-chevron-down";
     }
@@ -61,8 +61,8 @@
 
                 @Html.ActionLink("Company", "Index",
                 new { page = ViewBag.CurrentPage, SortColumn = "CompanyName", CurrentSort = ViewBag.CurrentSort, SearchText = ViewBag.SearchText })
-                @if (ViewBag.CurrentSort == "CompanyName")
-                { 
+                @if (ViewBag.OldSort == "CompanyName")
+                {
                     <i class="@className"></i>
                 }
             </th>
@@ -71,9 +71,9 @@
                 @*@Html.DisplayNameFor(model => model.FirstOrDefault().ContactName)*@
                 @Html.ActionLink("Name", "Index",
                 new { page = ViewBag.CurrentPage, SortColumn = "ContactName", CurrentSort = ViewBag.CurrentSort, SearchText = ViewBag.SearchText })
-                @if (ViewBag.CurrentSort == "ContactName")
-                { 
-                    <i class="@className"></i>            
+                @if (ViewBag.OldSort == "ContactName")
+                {
+                    <i class="@className"></i>
                 }
             </th>
 
@@ -81,9 +81,9 @@
                 @*@Html.DisplayNameFor(model => model.FirstOrDefault().ContactTitle)*@
                 @Html.ActionLink("Title", "Index",
                 new { page = ViewBag.CurrentPage, SortColumn = "ContactTitle", CurrentSort = ViewBag.CurrentSort, SearchText = ViewBag.SearchText })
-                @if (ViewBag.CurrentSort == "ContactTitle")
-                { 
-                    <i class="@className"></i>            
+                @if (ViewBag.OldSort == "ContactTitle")
+                {
+                    <i class="@className"></i>
                 }
             </th>
 
@@ -91,9 +91,9 @@
                 @*@Html.DisplayNameFor(model => model.FirstOrDefault().Address)*@
                 @Html.ActionLink("Address", "Index",
                 new { page = ViewBag.CurrentPage, SortColumn = "Address", CurrentSort = ViewBag.CurrentSort, SearchText = ViewBag.SearchText })
-                @if (ViewBag.CurrentSort == "Address")
-                { 
-                    <i class="@className"></i>            
+                @if (ViewBag.OldSort == "Address")
+                {
+                    <i class="@className"></i>
                 }
             </th>
 
@@ -102,7 +102,7 @@
         </tr>
 
         @foreach (var item in Model)
-            {
+        {
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.CompanyName)
@@ -124,13 +124,13 @@
                     @Html.ActionLink("Delete", "Delete", new { id = item.CustomerID, page = ViewBag.CurrentPage })
                 </td>
             </tr>
-            }
+        }
 
     </table>
 
 </div>
 
-@if(Model.Count>0)
+@if (Model.Count > 0)
 {
     @: Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount / (Total Records:  @Model.TotalItemCount)
 

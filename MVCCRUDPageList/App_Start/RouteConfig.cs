@@ -40,13 +40,13 @@ namespace MVCCRUDPageList
             routes.MapRoute(
                 name: "PageWithSort",
                 url: "{controller}/{action}/{page}/{SortColumn}/{CurrentSort}",
-                defaults: new { action = "Index" }
+                defaults: new { action = "Index", page = UrlParameter.Optional, SortColumn = UrlParameter.Optional, CurrentSort = UrlParameter.Optional }
             );
 
             routes.MapRoute(
                 name: "PageWithId",
                 url: "{controller}/{action}/{page}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", page = UrlParameter.Optional, id = UrlParameter.Optional }
             );
 
             routes.MapRoute(

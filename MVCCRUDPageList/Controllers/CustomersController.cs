@@ -20,8 +20,8 @@ namespace MVCCRUDPageList.Controllers
         public ActionResult Index(int? page, string SortColumn, string CurrentSort, String SearchText)
         {
             var customer = (from s in db.Customers
-                           // select s;
-                           select new CustomerDTO
+                            // select s;
+                            select new CustomerDTO
                             {
                                 CompanyName = s.CompanyName,
                                 ContactName = s.ContactName,
@@ -34,7 +34,7 @@ namespace MVCCRUDPageList.Controllers
             ViewBag.CurrentPage = pageNumber;
             SortColumn = String.IsNullOrEmpty(SortColumn) ? "CompanyName" : SortColumn;
             ViewBag.CurrentSort = SortColumn;
-            ViewBag.OldSort = CurrentSort;
+            //ViewBag.OldSort = CurrentSort;
             ViewBag.SearchText = SearchText;
 
             if (!String.IsNullOrEmpty(SearchText))
@@ -48,10 +48,11 @@ namespace MVCCRUDPageList.Controllers
             switch (SortColumn)
             {
                 case "CompanyName":
+                    ViewBag.OldSort = "CompanyName";
                     if (SortColumn.Equals(CurrentSort))
                     {
                         customer = customer.OrderByDescending(m => m.CompanyName);
-                        //ViewBag.CurrentSort = "";
+                        ViewBag.CurrentSort = "";
                         ViewBag.SortOrder = "desc";
                     }
                     else
@@ -62,10 +63,11 @@ namespace MVCCRUDPageList.Controllers
                     break;
 
                 case "ContactName":
+                    ViewBag.OldSort = "ContactName";
                     if (SortColumn.Equals(CurrentSort))
                     {
                         customer = customer.OrderByDescending(m => m.ContactName);
-                       // ViewBag.CurrentSort = "";
+                        ViewBag.CurrentSort = "";
                         ViewBag.SortOrder = "desc";
                     }
                     else
@@ -76,10 +78,11 @@ namespace MVCCRUDPageList.Controllers
                     break;
 
                 case "ContactTitle":
+                    ViewBag.OldSort = "ContactTitle";
                     if (SortColumn.Equals(CurrentSort))
                     {
                         customer = customer.OrderByDescending(m => m.ContactTitle);
-                        //ViewBag.CurrentSort = "";
+                        ViewBag.CurrentSort = "";
                         ViewBag.SortOrder = "desc";
                     }
                     else
@@ -90,10 +93,11 @@ namespace MVCCRUDPageList.Controllers
                     break;
 
                 case "Address":
+                    ViewBag.OldSort = "Address";
                     if (SortColumn.Equals(CurrentSort))
                     {
                         customer = customer.OrderByDescending(m => m.Address);
-                        //ViewBag.CurrentSort = "";
+                        ViewBag.CurrentSort = "";
                         ViewBag.SortOrder = "desc";
                     }
                     else
@@ -104,6 +108,7 @@ namespace MVCCRUDPageList.Controllers
                     break;
 
                 case "Default":
+                    ViewBag.OldSort = "CompanyName";
                     customer = customer.OrderBy(m => m.CompanyName);
                     ViewBag.SortOrder = "asc";
                     break;

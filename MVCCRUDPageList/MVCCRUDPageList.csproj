@@ -159,6 +159,7 @@
     <Content Include="App_Data\Customers_log.ldf">
       <DependentUpon>Customers.mdf</DependentUpon>
     </Content>
+    <Content Include="code-backup.txt" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\PagedList.css" />
