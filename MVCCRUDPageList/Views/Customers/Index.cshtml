@@ -163,16 +163,15 @@
 
 
                 <td class="text-center">
-                    @*@Html.ActionLink("Edit", "Edit", new { id = item.CustomerID, page = ViewBag.CurrentPage }) |
+                    @Html.ActionLink("Edit", "Edit", new { id = item.CustomerID, page = ViewBag.CurrentPage }) |
                     @Html.ActionLink("Details", "Details", new { id = item.CustomerID, page = ViewBag.CurrentPage }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.CustomerID, page = ViewBag.CurrentPage })*@
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CustomerID, page = ViewBag.CurrentPage })
 
-                    cust id @item.CustomerID
-                    @Html.RouteLink("Edit", "PageWithId",
+                    @*@Html.RouteLink("Edit", "PageWithId",
                     new
                     {
                         controller = "Customers",
-                        action = "Edit",
+                        action = String.Empty,
                         id = item.CustomerID,
                         page = ViewBag.CurrentPage
                     }) |
@@ -193,7 +192,7 @@
                         action = "Delete",
                         id = item.CustomerID,
                         page = ViewBag.CurrentPage
-                    })
+                    })*@
 
 
                 </td>
@@ -208,7 +207,18 @@
 {
     @: Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount / (Total Records:  @Model.TotalItemCount)
 
-    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, SortColumn = ViewBag.CurrentSort, CurrentSort = ViewBag.OldSort, SearchText = ViewBag.SearchText }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+    @Html.PagedListPager(Model, page =>
+    @Url.RouteUrl("PageWithSort",
+    new
+    {
+        page,
+        SortColumn = ViewBag.CurrentSort,
+        SearchText = ViewBag.SearchText
+    }),
+    PagedListRenderOptions.OnlyShowFivePagesAtATime)
+
+    //comment the Page with Url.Action
+    @*@Html.PagedListPager(Model, page => Url.Action("Index", new { page, SortColumn = ViewBag.CurrentSort, CurrentSort = ViewBag.OldSort, SearchText = ViewBag.SearchText }), PagedListRenderOptions.OnlyShowFivePagesAtATime)*@
 }
 
-glyph icon @className
+
