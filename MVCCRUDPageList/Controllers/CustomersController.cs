@@ -14,13 +14,20 @@ namespace MVCCRUDPageList.Controllers
     public class CustomersController : Controller
     {
         private CustomersEntities db = new CustomersEntities();
+        public int recordcount = 0;
 
         // GET: Customers
         public ActionResult Index(int? page, string SortColumn, string CurrentSort, String SearchText)
         {
-            //var customer = (object) null;
-            var customer = from s in db.Customers
-                           select s;
+            var customer = (from s in db.Customers
+                           // select s;
+                           select new CustomerDTO
+                            {
+                                CompanyName = s.CompanyName,
+                                ContactName = s.ContactName,
+                                ContactTitle = s.ContactTitle,
+                                Address = s.Address,
+                            });
 
             int pageSize = 5;
             int pageNumber = (page ?? 1);
@@ -36,7 +43,6 @@ namespace MVCCRUDPageList.Controllers
                 || s.ContactName.ToUpper().Contains(SearchText.ToUpper())
                 || s.ContactTitle.ToUpper().Contains(SearchText.ToUpper())
                 || s.Address.ToUpper().Contains(SearchText.ToUpper()));
-                //customer = customer.Where(s => s.CompanyName.ToUpper().Contains(SearchText.ToUpper()));
             }
 
             switch (SortColumn)
@@ -44,51 +50,66 @@ namespace MVCCRUDPageList.Controllers
                 case "CompanyName":
                     if (SortColumn.Equals(CurrentSort))
                     {
-                        customer = customer.OrderByDescending(m => m.CompanyName); //.ToPagedList(pageNumber, pageSize);
-                        ViewBag.CurrentSort = "";
+                        customer = customer.OrderByDescending(m => m.CompanyName);
+                        //ViewBag.CurrentSort = "";
+                        ViewBag.SortOrder = "desc";
                     }
                     else
-                        customer = customer.OrderBy(m => m.CompanyName); //.ToPagedList(pageNumber, pageSize);
+                    {
+                        customer = customer.OrderBy(m => m.CompanyName);
+                        ViewBag.SortOrder = "asc";
+                    }
                     break;
 
                 case "ContactName":
                     if (SortColumn.Equals(CurrentSort))
                     {
-                        customer = db.Customers.OrderByDescending(m => m.ContactName); //.ToPagedList(pageNumber, pageSize);
-                        ViewBag.CurrentSort = "";
+                        customer = customer.OrderByDescending(m => m.ContactName);
+                       // ViewBag.CurrentSort = "";
+                        ViewBag.SortOrder = "desc";
                     }
                     else
-                        customer = db.Customers.OrderBy(m => m.ContactName); //.ToPagedList(pageNumber, pageSize);
+                    {
+                        customer = customer.OrderBy(m => m.ContactName);
+                        ViewBag.SortOrder = "asc";
+                    }
                     break;
 
                 case "ContactTitle":
                     if (SortColumn.Equals(CurrentSort))
                     {
-                        customer = db.Customers.OrderByDescending(m => m.ContactTitle); //.ToPagedList(pageNumber, pageSize);
-                        ViewBag.CurrentSort = "";
+                        customer = customer.OrderByDescending(m => m.ContactTitle);
+                        //ViewBag.CurrentSort = "";
+                        ViewBag.SortOrder = "desc";
                     }
                     else
-                        customer = db.Customers.OrderBy(m => m.ContactTitle); //.ToPagedList(pageNumber, pageSize);
+                    {
+                        customer = customer.OrderBy(m => m.ContactTitle);
+                        ViewBag.SortOrder = "asc";
+                    }
                     break;
 
                 case "Address":
                     if (SortColumn.Equals(CurrentSort))
                     {
-                        customer = db.Customers.OrderByDescending(m => m.Address); //.ToPagedList(pageNumber, pageSize);
-                        ViewBag.CurrentSort = "";
+                        customer = customer.OrderByDescending(m => m.Address);
+                        //ViewBag.CurrentSort = "";
+                        ViewBag.SortOrder = "desc";
                     }
                     else
-                        customer = db.Customers.OrderBy(m => m.Address); //.ToPagedList(pageNumber, pageSize);
+                    {
+                        customer = customer.OrderBy(m => m.Address);
+                        ViewBag.SortOrder = "asc";
+                    }
                     break;
 
                 case "Default":
-                    customer = db.Customers.OrderBy(m => m.CompanyName); //.ToPagedList(pageNumber, pageSize);
+                    customer = customer.OrderBy(m => m.CompanyName);
+                    ViewBag.SortOrder = "asc";
                     break;
             }
 
             return View(customer.ToPagedList(pageNumber, pageSize));
-
-            //return View(db.Customers.ToList());
         }
 
         // GET: Customers/Details/5

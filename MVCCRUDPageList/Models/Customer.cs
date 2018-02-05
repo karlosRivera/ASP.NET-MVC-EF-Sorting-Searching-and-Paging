@@ -34,4 +34,26 @@ namespace MVCCRUDPageList.Models
         public string Phone { get; set; }
         public string Fax { get; set; }
     }
+
+    public partial class CustomerDTO
+    {
+        public string CustomerID { get; set; }
+
+        [Display(Name = "Company")]
+        public string CompanyName { get; set; }
+
+        [Display(Name = "Name")]
+        public string ContactName { get; set; }
+
+        [Display(Name = "Title")]
+        public string ContactTitle { get; set; }
+
+        public string Address { get; set; }
+        public string City { get; set; }
+        public string Region { get; set; }
+        public string PostalCode { get; set; }
+        public string Country { get; set; }
+        public string Phone { get; set; }
+        public string Fax { get; set; }
+    }
 }
