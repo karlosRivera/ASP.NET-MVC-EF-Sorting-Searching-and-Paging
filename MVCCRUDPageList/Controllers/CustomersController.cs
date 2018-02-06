@@ -157,7 +157,7 @@ namespace MVCCRUDPageList.Controllers
         }
 
         // GET: Customers/Edit/5
-        public ActionResult Edit(string id, int page)
+        public ActionResult Edit(int page, string id)
         {
             if (id == null)
             {

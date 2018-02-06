@@ -10,6 +10,14 @@
         .form-gap {
             margin-bottom: 15px;
         }
+
+        .rightAlign {
+            text-align: right !important;
+            float: right;
+        }
+.helper-text-center {
+    text-align: center;
+}
     </style>
 }
 
@@ -60,7 +68,7 @@
                 @*@Html.DisplayNameFor(model => model.FirstOrDefault().CompanyName)*@
 
                 @*@Html.ActionLink("Company", "Index",
-                new { page = ViewBag.CurrentPage, SortColumn = "CompanyName", CurrentSort = ViewBag.CurrentSort, SearchText = ViewBag.SearchText })*@
+                    new { page = ViewBag.CurrentPage, SortColumn = "CompanyName", CurrentSort = ViewBag.CurrentSort, SearchText = ViewBag.SearchText })*@
 
                 @Html.RouteLink("Company", "PageWithSort",
                 new
@@ -74,14 +82,14 @@
                 })
                 @if (ViewBag.OldSort == "CompanyName")
                 {
-                    <i class="@className"></i>
+                    <i class="@className rightAlign"></i>
                 }
             </th>
 
             <th>
                 @*@Html.DisplayNameFor(model => model.FirstOrDefault().ContactName)*@
                 @*@Html.ActionLink("Name", "Index",
-                new { page = ViewBag.CurrentPage, SortColumn = "ContactName", CurrentSort = ViewBag.CurrentSort, SearchText = ViewBag.SearchText })*@
+                    new { page = ViewBag.CurrentPage, SortColumn = "ContactName", CurrentSort = ViewBag.CurrentSort, SearchText = ViewBag.SearchText })*@
 
                 @Html.RouteLink("Name", "PageWithSort",
                 new
@@ -95,14 +103,14 @@
                 })
                 @if (ViewBag.OldSort == "ContactName")
                 {
-                    <i class="@className"></i>
+                    <i class="@className rightAlign"></i>
                 }
             </th>
 
             <th>
                 @*@Html.DisplayNameFor(model => model.FirstOrDefault().ContactTitle)*@
                 @*@Html.ActionLink("Title", "Index",
-                new { page = ViewBag.CurrentPage, SortColumn = "ContactTitle", CurrentSort = ViewBag.CurrentSort, SearchText = ViewBag.SearchText })*@
+                    new { page = ViewBag.CurrentPage, SortColumn = "ContactTitle", CurrentSort = ViewBag.CurrentSort, SearchText = ViewBag.SearchText })*@
 
                 @Html.RouteLink("Title", "PageWithSort",
                 new
@@ -116,14 +124,14 @@
                 })
                 @if (ViewBag.OldSort == "ContactTitle")
                 {
-                    <i class="@className"></i>
+                    <i class="@className rightAlign"></i>
                 }
             </th>
 
             <th>
                 @*@Html.DisplayNameFor(model => model.FirstOrDefault().Address)*@
                 @*@Html.ActionLink("Address", "Index",
-                new { page = ViewBag.CurrentPage, SortColumn = "Address", CurrentSort = ViewBag.CurrentSort, SearchText = ViewBag.SearchText })*@
+                    new { page = ViewBag.CurrentPage, SortColumn = "Address", CurrentSort = ViewBag.CurrentSort, SearchText = ViewBag.SearchText })*@
 
                 @Html.RouteLink("Address", "PageWithSort",
                 new
@@ -137,65 +145,73 @@
                 })
                 @if (ViewBag.OldSort == "Address")
                 {
-                    <i class="@className"></i>
+                    <i class="@className rightAlign"></i>
                 }
             </th>
 
 
             <th class="text-center">Action</th>
         </tr>
+        @if (Model.Count > 0)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CompanyName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ContactName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ContactTitle)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>
 
-        @foreach (var item in Model)
+
+                    <td class="text-center">
+                        @Html.ActionLink("Edit", "Edit", new { id = item.CustomerID, page = ViewBag.CurrentPage }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.CustomerID, page = ViewBag.CurrentPage }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.CustomerID, page = ViewBag.CurrentPage })
+
+                        @*@Html.RouteLink("Edit", "PageWithId",
+                            new
+                            {
+                                controller = "Customers",
+                                action = "Edit",
+                                id = item.CustomerID,
+                                page = ViewBag.CurrentPage
+                            }) |
+
+                            @Html.RouteLink("Details", "PageWithId",
+                            new
+                            {
+                                controller = "Customers",
+                                action = "Details",
+                                id = item.CustomerID,
+                                page = ViewBag.CurrentPage
+                            }) |
+
+                            @Html.RouteLink("Delete", "PageWithId",
+                            new
+                            {
+                                controller = "Customers",
+                                action = "Delete",
+                                id = item.CustomerID,
+                                page = ViewBag.CurrentPage
+                            })*@
+
+
+                    </td>
+                </tr>
+            }
+        }
+        else
         {
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CompanyName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ContactName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ContactTitle)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Address)
-                </td>
-
-
-                <td class="text-center">
-                    @Html.ActionLink("Edit", "Edit", new { id = item.CustomerID, page = ViewBag.CurrentPage }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.CustomerID, page = ViewBag.CurrentPage }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.CustomerID, page = ViewBag.CurrentPage })
-
-                    @*@Html.RouteLink("Edit", "PageWithId",
-                    new
-                    {
-                        controller = "Customers",
-                        action = String.Empty,
-                        id = item.CustomerID,
-                        page = ViewBag.CurrentPage
-                    }) |
-
-                    @Html.RouteLink("Details", "PageWithId",
-                    new
-                    {
-                        controller = "Customers",
-                        action = "Details",
-                        id = item.CustomerID,
-                        page = ViewBag.CurrentPage
-                    }) |
-
-                    @Html.RouteLink("Delete", "PageWithId",
-                    new
-                    {
-                        controller = "Customers",
-                        action = "Delete",
-                        id = item.CustomerID,
-                        page = ViewBag.CurrentPage
-                    })*@
-
-
-                </td>
+                <td colspan="5" class="helper-text-center"><b>No data found...</b></td>
             </tr>
         }
 
@@ -215,7 +231,14 @@
         SortColumn = ViewBag.CurrentSort,
         SearchText = ViewBag.SearchText
     }),
-    PagedListRenderOptions.OnlyShowFivePagesAtATime)
+    new PagedListRenderOptions
+    {
+        DisplayLinkToFirstPage = PagedListDisplayMode.Always,
+        DisplayLinkToLastPage = PagedListDisplayMode.Always,
+        DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+        DisplayLinkToNextPage = PagedListDisplayMode.Always,
+        MaximumPageNumbersToDisplay = 5    
+    })
 
     //comment the Page with Url.Action
     @*@Html.PagedListPager(Model, page => Url.Action("Index", new { page, SortColumn = ViewBag.CurrentSort, CurrentSort = ViewBag.OldSort, SearchText = ViewBag.SearchText }), PagedListRenderOptions.OnlyShowFivePagesAtATime)*@
