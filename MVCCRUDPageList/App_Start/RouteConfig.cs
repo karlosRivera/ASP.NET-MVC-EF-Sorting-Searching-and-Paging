@@ -56,11 +56,11 @@ namespace MVCCRUDPageList
             //url: "{controller}/{action}/{page}/{id}"
             //);
 
-            routes.MapRoute(
-                name: "PageWithId",
-                url: "Customers/Edit/{page}/{id}",
-                defaults: new { controller = "Customers", action = "Edit" }
-            );
+            //routes.MapRoute(
+            //    name: "PageWithId",
+            //    url: "Customers/Edit/{page}/{id}",
+            //    defaults: new { controller = "Customers", action = "Edit" }
+            //);
 
             routes.MapRoute(
                 name: "Default",
