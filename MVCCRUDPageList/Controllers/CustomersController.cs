@@ -115,8 +115,7 @@ namespace MVCCRUDPageList.Controllers
                     break;
             }
 
-            IPagedList<CustomerDTO> oCustomer = customer.ToPagedList(pageNumber, pageSize);
-            return View(oCustomer);
+            return View(customer.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Customers/Details/5
