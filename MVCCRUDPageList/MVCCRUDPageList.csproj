@@ -132,6 +132,7 @@
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\WebGridEditableController.cs" />
+    <Compile Include="Controllers\WebGridTestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -220,6 +221,7 @@
     <Content Include="Views\Customers\Edit.cshtml" />
     <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\WebGridEditable\Index.cshtml" />
+    <Content Include="Views\WebGridTest\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

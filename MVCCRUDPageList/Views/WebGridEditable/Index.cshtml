@@ -1,8 +1,9 @@
-﻿@model List<MVCCRUDPageList.Controllers.UserModel>
+﻿@model MVCCRUDPageList.Controllers.UserVM
 
-@using (Html.BeginForm(null,null,FormMethod.Post))
+
+@using (Html.BeginForm("Index", "WebGridEditable", FormMethod.Post))
 {
-    var grid = new WebGrid(Model);
+    var grid = new WebGrid(Model.UserList, canSort: false, canPage: false);
     var rowNum = 0;
     
     <div id="gridContent" style=" padding:20px; ">
@@ -13,20 +14,22 @@
         headerStyle: "header",
         columns: grid.Columns
         (
-            //grid.Column("RowNumber", style: "HideFirstCol", format: item => rowNum = rowNum + 1),
-            grid.Column(null, null, format: @<input type="hidden" name="IDHidden" value="rowNum + 1" />),
+            @*grid.Column(null, null, format: @<input type="hidden" name="IDHidden" value="rowNum + 1" />),*@
+            grid.Column(null, null, format: item => rowNum = rowNum + 1),
+        
+        
             grid.Column("First Name",
                         style: "col2",
-                        format: @<text>
-                        @Html.TextBox("UserModel[" + (rowNum - 1).ToString() + "].FirstName", (object)item.FirstName)
-                        </text>),
+                            format: (item) => @Html.TextBox("UserList[" + (rowNum - 1).ToString() + "].FirstName", (object)item.FirstName)
+                        ),
 
 
             grid.Column("Last Name",
                         style: "col2",
-                        format: @<text>
-                        @Html.TextBox("UserModel[" + (rowNum - 1).ToString() + "].LastName", (object)item.LastName)
-                        </text>)
+                        format: (item) =>
+                            @Html.TextBox("UserList[" + (rowNum - 1).ToString() + "].LastName", (object)item.LastName)
+                        )
+       
         ))
     </div>
     <input type="submit" name="SaveButton" value="Save" />
