@@ -129,6 +129,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AjaxBeginJsonController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\WebGridController.cs" />
@@ -224,6 +225,7 @@
     <Content Include="Views\WebGridEditable\Index.cshtml" />
     <Content Include="Views\WebGridTest\Index.cshtml" />
     <Content Include="Views\WebGrid\Index.cshtml" />
+    <Content Include="Views\AjaxBeginJson\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
