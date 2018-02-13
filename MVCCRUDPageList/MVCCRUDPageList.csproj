@@ -132,12 +132,14 @@
     <Compile Include="Controllers\AjaxBeginJsonController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\WebGridMoreControlsController.cs" />
     <Compile Include="Controllers\WebGridTextBoxForController.cs" />
     <Compile Include="Controllers\WebGridEditableController.cs" />
     <Compile Include="Controllers\WebGridTestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Country.cs" />
     <Compile Include="Models\Customer.cs">
       <DependentUpon>CustomerCtx.tt</DependentUpon>
     </Compile>
@@ -156,6 +158,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CustomerCtx.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Student.cs" />
+    <Compile Include="Models\StudentListViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -227,6 +231,7 @@
     <Content Include="Views\WebGridTest\Index.cshtml" />
     <Content Include="Views\AjaxBeginJson\Index.cshtml" />
     <Content Include="Views\WebGridTextBoxFor\Index.cshtml" />
+    <Content Include="Views\WebGridMoreControls\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
