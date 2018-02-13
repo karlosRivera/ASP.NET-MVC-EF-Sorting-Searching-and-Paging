@@ -26,8 +26,8 @@
     <h2>News letter sample</h2>
     @using (Ajax.BeginForm("Index", "AjaxBeginJson", null, 
         new AjaxOptions() { HttpMethod = "post", 
-                UpdateTargetId = "Newsletter", 
-                InsertionMode = InsertionMode.Replace,
+                //UpdateTargetId = "Newsletter", 
+                //InsertionMode = InsertionMode.Replace,
                 OnSuccess = "OnSuccess",
                 OnFailure = "OnFailure",
                 OnBegin = "OnBegin"
@@ -64,13 +64,11 @@
         var $busyBox = $("<div class='form-group'><div id='loadingdiv' class='col-md-offset-2 col-md-5'><button class='btn btn-sm btn-warning'><span class='glyphicon glyphicon-refresh glyphicon-refresh-animate'></span> Loading...</button></div></div>");
 
         function OnSuccess(data) {
-            //alert('HTTP Status Code: ' + data.param1 + "  " + data.param2);
-            var $container = $("#Newsletter");
-            $($busyBox).remove();
-            $container.append($successAlert).fadeIn(1000);
-
-            //$($busyBox).fadeOut("normal", function () {
-            //});
+            if (data.Success == 'OK') {
+                var $container = $("#Newsletter");
+                $($busyBox).remove();
+                $container.append($successAlert).fadeIn(1000);
+            }
         }
 
         function OnFailure(data) {

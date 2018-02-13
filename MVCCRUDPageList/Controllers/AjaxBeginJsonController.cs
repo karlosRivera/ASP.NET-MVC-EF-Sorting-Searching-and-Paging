@@ -18,9 +18,18 @@ namespace MVCCRUDPageList.other.Controllers
         [HttpPost]
         public ActionResult Index(Customer oCustomer)
         {
-            System.Threading.Thread.Sleep(2000);
+            System.Threading.Thread.Sleep(500);
             if (Request.IsAjaxRequest())
-                return PartialView(oCustomer);
+            {
+                bool result = true;
+
+                return Json(new
+                {
+                    Success = (result? "OK":"Fail"),
+                    Message = result ? "<strong>Success!</strong>Your data has been sent successfully." : "Error!"
+                });
+                //return PartialView(oCustomer);
+            }
 
             return View(oCustomer);
         }
