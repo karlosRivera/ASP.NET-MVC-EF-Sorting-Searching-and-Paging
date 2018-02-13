@@ -132,7 +132,7 @@
     <Compile Include="Controllers\AjaxBeginJsonController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\WebGridController.cs" />
+    <Compile Include="Controllers\WebGridTextBoxForController.cs" />
     <Compile Include="Controllers\WebGridEditableController.cs" />
     <Compile Include="Controllers\WebGridTestController.cs" />
     <Compile Include="Global.asax.cs">
@@ -225,8 +225,8 @@
     <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\WebGridEditable\Index.cshtml" />
     <Content Include="Views\WebGridTest\Index.cshtml" />
-    <Content Include="Views\WebGrid\Index.cshtml" />
     <Content Include="Views\AjaxBeginJson\Index.cshtml" />
+    <Content Include="Views\WebGridTextBoxFor\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

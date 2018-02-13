@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace MVCCRUDPageList.test.Controllers
 {
-    public class WebGridController : Controller
+    public class WebGridTextBoxForController : Controller
     {
         // GET: WebGrid
         public ActionResult Index()

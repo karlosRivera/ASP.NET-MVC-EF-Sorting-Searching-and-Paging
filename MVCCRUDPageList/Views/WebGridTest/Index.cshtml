@@ -15,8 +15,8 @@
             (
                 grid.Column("RowNumber", format: item => rowNum = rowNum + 1),
                 grid.Column("stude Name", format: (item) => Html.TextBox("StudentList[" + (rowNum - 1).ToString() + "].Name", (object)item.Name)),
-                 grid.Column("stude Class", format: (item) => Html.TextBox("StudentList[" + (rowNum - 1).ToString() + "].ClassOfStudent", (object)item.ClassOfStudent)),
-                 grid.Column("stude Address", format: (item) => Html.TextBox("StudentList[" + (rowNum - 1).ToString() + "].Address", (object)item.Address))
+                grid.Column("stude Class", format: (item) => Html.TextBox("StudentList[" + (rowNum - 1).ToString() + "].ClassOfStudent", (object)item.ClassOfStudent)),
+                grid.Column("stude Address", format: (item) => Html.TextBox("StudentList[" + (rowNum - 1).ToString() + "].Address", (object)item.Address))
             ), mode: WebGridPagerModes.Numeric)
             </div>
             <input type="submit" value="Submit" />

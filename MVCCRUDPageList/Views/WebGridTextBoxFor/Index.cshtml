@@ -1,0 +1,30 @@
+﻿@model List<MVCCRUDPageList.test.Controllers.Student>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm("Index", "WebGridTextBoxFor", FormMethod.Post))
+{
+    var grid = new WebGrid(Model, canSort: false, canPage: false);
+    var rowNum = 0;
+
+
+    <div id="gridContent" style=" padding:20px; ">
+        @grid.GetHtml(
+        tableStyle: "table",
+        alternatingRowStyle: "alternate",
+        selectedRowStyle: "selected",
+        headerStyle: "header",
+        columns: grid.Columns
+        (
+            grid.Column(null, null, format: item => rowNum = rowNum + 1),
+            grid.Column("First Name", format: (item) => @Html.TextBoxFor(m => m[rowNum - 1].FirstName, new { @class = "edit-mode" })),
+            grid.Column("Last Name", format: (item) => @Html.TextBoxFor(m => m[rowNum - 1].LastName, new { @class = "edit-mode" }))
+
+        ))
+        <input type="submit" value="Submit" />
+    </div>
+
+}
