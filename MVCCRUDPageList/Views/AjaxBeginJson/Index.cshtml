@@ -60,18 +60,37 @@
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
 
     <script type="text/javascript">
-        var successAlert = $("<div class='form-group'><div id='msgdiv' class='col-md-offset-2 col-md-5 alert alert-success fade in'><a href='#' class='close' data-dismiss='alert'>&times;</a><strong>Success!</strong>Your data has been sent successfully.</div></div>")
-        var busyBox = $("<div class='form-group'><div id='loadingdiv' class='col-md-offset-2 col-md-5'><button class='btn btn-sm btn-warning'><span class='glyphicon glyphicon-refresh glyphicon-refresh-animate'></span> Loading...</button></div></div>")
+        var $successAlert = $("<div class='form-group'><div id='msgdiv' class='col-md-offset-2 col-md-5 alert alert-success fade in'><strong>Success!</strong>Your data has been sent successfully.</div></div>");
+        var $busyBox = $("<div class='form-group'><div id='loadingdiv' class='col-md-offset-2 col-md-5'><button class='btn btn-sm btn-warning'><span class='glyphicon glyphicon-refresh glyphicon-refresh-animate'></span> Loading...</button></div></div>");
 
         function OnSuccess(data) {
-            alert('HTTP Status Code: ' + data.param1 + "  " + data.param2);
+            //alert('HTTP Status Code: ' + data.param1 + "  " + data.param2);
+            var $container = $("#Newsletter");
+            $($busyBox).remove();
+            $container.append($successAlert).fadeIn(1000);
+
+            //$($busyBox).fadeOut("normal", function () {
+            //});
         }
+
         function OnFailure(data) {
             alert('HTTP Status Code: ' + data.param1 + '  Error Message: ' + data.param2);
         }
 
         function OnBegin() {
-            alert('ajax request started');
+            var $container = $("#Newsletter");
+            $($successAlert).remove();
+            $container.append($busyBox).fadeIn(1000);
         }
+
+        //delay ajax form submition
+        //$('form').submit(function (e) {
+        //    alert('form will post');
+        //    var form = this;
+        //    e.preventDefault();
+        //    setTimeout(function () {
+        //        form.submit();
+        //    }, 10000); // in milliseconds
+        //});
     </script>
 }

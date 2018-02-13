@@ -18,7 +18,10 @@ namespace MVCCRUDPageList.other.Controllers
         [HttpPost]
         public ActionResult Index(Customer oCustomer)
         {
-            var xx = Request.IsAjaxRequest();
+            System.Threading.Thread.Sleep(2000);
+            if (Request.IsAjaxRequest())
+                return PartialView(oCustomer);
+
             return View(oCustomer);
         }
     }
