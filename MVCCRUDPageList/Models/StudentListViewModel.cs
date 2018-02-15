@@ -9,7 +9,6 @@ namespace MVCCRUDPageList.Models
     {
         public IList<Student> Students { get; set; }
 
-        public int SelectedCountryId { set; get; }
         public List<Country> Country { get; set; }
 
         public StudentListViewModel()

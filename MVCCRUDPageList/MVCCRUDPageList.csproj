@@ -158,6 +158,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CustomerCtx.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\CustomerDTO.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\StudentListViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

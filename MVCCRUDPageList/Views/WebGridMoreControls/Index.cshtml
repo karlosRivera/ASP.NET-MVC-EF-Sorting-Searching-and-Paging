@@ -23,9 +23,9 @@
             grid.Column("ID", format: (item) => @Html.TextBoxFor(m => m.Students[rowNum - 1].ID, new { @class = "edit-mode" })),
             grid.Column("Name", format: (item) => @Html.TextBoxFor(m => m.Students[rowNum - 1].Name, new { @class = "edit-mode" })),
 
-             grid.Column("Country", format: (item) => 
-                 @Html.DropDownListFor(x => x.SelectedCountryId,
-                  new SelectList(Model.Country, "ID", "Name", Model.SelectedCountryId = item.CountryID), 
+             grid.Column("Country", format: (item) =>
+                  @Html.DropDownListFor(x => x.Students[rowNum - 1].CountryID,
+                  new SelectList(Model.Country, "ID", "Name", item.CountryID), 
                  "-- Select States--", new { id = "cboCountry", @class = "edit-mode" }))
         ))
         <input type="submit" value="Submit" />

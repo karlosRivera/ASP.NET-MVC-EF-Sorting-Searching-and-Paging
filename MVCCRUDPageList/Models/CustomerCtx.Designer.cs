@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'c:\users\tridip\documents\visual studio 2013\Projects\MVCCRUDPageList\MVCCRUDPageList\Models\CustomerCtx.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Tridip\Source\Repos\ASP.NET-MVC-EF-Sorting-Searching-and-Paging\MVCCRUDPageList\Models\CustomerCtx.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
