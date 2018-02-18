@@ -13,10 +13,10 @@ namespace MVCCRUDPageList.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class CustomersEntities : DbContext
+    public partial class NorthwindEntities : DbContext
     {
-        public CustomersEntities()
-            : base("name=CustomersEntities")
+        public NorthwindEntities()
+            : base("name=NorthwindEntities")
         {
         }
     

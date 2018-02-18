@@ -13,7 +13,7 @@ namespace MVCCRUDPageList.Controllers
 {
     public class CustomersController : Controller
     {
-        private CustomersEntities db = new CustomersEntities();
+        private NorthwindEntities db = new NorthwindEntities();
         public int recordcount = 0;
 
         // GET: Customers
