@@ -39,10 +39,36 @@ namespace MVCCRUDPageList
 
 
 
+
+
+
+            //routes.MapRoute(
+            //name: "PageWithId",
+            //url: "{controller}/{action}/{page}/{id}"
+            //);
+
+            routes.MapRoute(
+                name: "edit",
+                url: "Customers/Edit/{page}/{id}",
+                defaults: new { controller = "Customers", action = "Edit" }
+            );
+
+            routes.MapRoute(
+                name: "details",
+                url: "Customers/Details/{page}/{id}",
+                defaults: new { controller = "Customers", action = "Details" }
+            );
+
+            routes.MapRoute(
+                name: "delete",
+                url: "Customers/Delete/{page}/{id}",
+                defaults: new { controller = "Customers", action = "Delete" }
+            );
+
             routes.MapRoute(
                 name: "PageWithSort",
-                url: "{controller}/{action}/{page}/{SortColumn}/{CurrentSort}",
-                defaults: new { action = "Index", page = UrlParameter.Optional, SortColumn = UrlParameter.Optional, CurrentSort = UrlParameter.Optional }
+                url: "{controller}/{action}/{page}/{SortColumn}/{CurrentSort}/{SearchText}",
+                defaults: new { action = "Index", page = UrlParameter.Optional, SortColumn = UrlParameter.Optional, CurrentSort = UrlParameter.Optional, SearchText = UrlParameter.Optional }
             );
 
             //routes.MapRoute(
@@ -51,16 +77,6 @@ namespace MVCCRUDPageList
             //    defaults: new { controller = "Customers", action = "Edit", page = UrlParameter.Optional, id = UrlParameter.Optional }
             //);
 
-            //routes.MapRoute(
-            //name: "PageWithId",
-            //url: "{controller}/{action}/{page}/{id}"
-            //);
-
-            //routes.MapRoute(
-            //    name: "PageWithId",
-            //    url: "Customers/Edit/{page}/{id}",
-            //    defaults: new { controller = "Customers", action = "Edit" }
-            //);
 
             routes.MapRoute(
                 name: "Default",

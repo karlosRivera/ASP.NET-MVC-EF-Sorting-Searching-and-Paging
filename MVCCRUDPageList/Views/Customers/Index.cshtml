@@ -30,8 +30,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-
-@using (Html.BeginForm("Index", "Customers", new { page = ViewBag.CurrentPage, SortColumn = ViewBag.CurrentSort, CurrentSort = ViewBag.OldSort }))
+@using (Html.BeginRouteForm("PageWithSort", new { page = ViewBag.CurrentPage, SortColumn = ViewBag.CurrentSort, CurrentSort = ViewBag.OldSort, SearchText = ViewBag.SearchText },FormMethod.Get))
 {
     <div class="row form-gap">
         <div class="input-group col-xs-5 col-lg-4">
