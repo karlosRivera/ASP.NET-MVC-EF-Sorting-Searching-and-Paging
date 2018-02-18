@@ -16,7 +16,7 @@ namespace MVCCRUDPageList.Models
     public partial class NorthwindEntities : DbContext
     {
         public NorthwindEntities()
-            : base("name=NorthwindEntities")
+            : base("name=CustomersEntities")
         {
         }
     

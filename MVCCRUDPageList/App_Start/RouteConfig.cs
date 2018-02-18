@@ -71,13 +71,6 @@ namespace MVCCRUDPageList
                 defaults: new { action = "Index", page = UrlParameter.Optional, SortColumn = UrlParameter.Optional, CurrentSort = UrlParameter.Optional, SearchText = UrlParameter.Optional }
             );
 
-            //routes.MapRoute(
-            //    name: "PageWithId",
-            //    url: "{controller}/{action}/{page}/{id}",
-            //    defaults: new { controller = "Customers", action = "Edit", page = UrlParameter.Optional, id = UrlParameter.Optional }
-            //);
-
-
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
