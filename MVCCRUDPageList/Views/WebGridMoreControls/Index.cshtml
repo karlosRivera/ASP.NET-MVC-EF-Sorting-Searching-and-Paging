@@ -19,14 +19,25 @@
         headerStyle: "header",
         columns: grid.Columns
         (
-            grid.Column(null, null, format: item => rowNum = rowNum + 1),
+            grid.Column(null, header: "Row No", format: item => rowNum = rowNum + 1),
             grid.Column("ID", format: (item) => @Html.TextBoxFor(m => m.Students[rowNum - 1].ID, new { @class = "edit-mode" })),
             grid.Column("Name", format: (item) => @Html.TextBoxFor(m => m.Students[rowNum - 1].Name, new { @class = "edit-mode" })),
 
              grid.Column("Country", format: (item) =>
                   @Html.DropDownListFor(x => x.Students[rowNum - 1].CountryID,
-                  new SelectList(Model.Country, "ID", "Name", item.CountryID), 
-                 "-- Select States--", new { id = "cboCountry", @class = "edit-mode" }))
+                  new SelectList(Model.Country, "ID", "Name", item.CountryID),
+                 "-- Select Countries--", new { id = "cboCountry", @class = "edit-mode" })),
+
+            grid.Column(header: "Hobbies",
+            format: @<text>
+            foreach (var item in Model.Hobbies)
+            {
+
+            }
+            </text>)
+                    
+
+
         ))
         <input type="submit" value="Submit" />
     </div>

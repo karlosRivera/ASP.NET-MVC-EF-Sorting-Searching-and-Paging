@@ -15,6 +15,6 @@ namespace MVCCRUDPageList.Models
         //public string LastName { get; set; }
 
         public int CountryID { get; set; }
-        //public string CountryName { get; set; }
+        public int Hobby { get; set; }
     }
 }
