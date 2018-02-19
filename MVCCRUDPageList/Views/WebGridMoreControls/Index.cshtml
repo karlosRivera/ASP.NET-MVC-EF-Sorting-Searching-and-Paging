@@ -9,7 +9,7 @@
 {
     var grid = new WebGrid(Model.Students, canSort: false, canPage: false);
     var rowNum = 0;
-
+    var SelectedHobbies = 0;
 
     <div id="gridContent" style=" padding:20px; ">
         @grid.GetHtml(
@@ -30,15 +30,21 @@
 
             grid.Column(header: "Hobbies",
             format: @<text>
-            foreach (var item in Model.Hobbies)
+            Hobbies
+            @foreach (var hobby in Model.Hobbies)
             {
-
+                <div class="checkbox">
+                    <label>
+                        @Html.HiddenFor(e => e.Hobbies)
+                        <input type="checkbox"
+                               name="Hobbies"
+                               value="@hobby.ID" /> @hobby.Name
+                    </label>
+                 </div>
             }
             </text>)
-                    
-
-
         ))
+
         <input type="submit" value="Submit" />
     </div>
 
