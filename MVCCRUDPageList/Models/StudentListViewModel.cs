@@ -10,7 +10,7 @@ namespace MVCCRUDPageList.Models
     {
         public IList<Student> Students { get; set; }
         public List<Country> Country { get; set; }
-
+        public List<Sex> Sex { get; set; }
         
 
         public StudentListViewModel()
@@ -57,6 +57,12 @@ namespace MVCCRUDPageList.Models
                 new Country{ID=1,Name="India"},
                 new Country{ID=2,Name="UK"},
                 new Country{ID=3,Name="USA"}
+            };
+
+            Sex = new List<Sex>
+            {
+                new Sex{ID="M",SexName="Male"},
+                new Sex{ID="F",SexName="Female"}
             };
 
         }

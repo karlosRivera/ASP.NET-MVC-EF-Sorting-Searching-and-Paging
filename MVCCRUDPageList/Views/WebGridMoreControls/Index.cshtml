@@ -39,8 +39,22 @@
                     @Html.LabelFor(m => m.Students[rowNum - 1].Hobbies[i].Name, Model.Students.FirstOrDefault().Hobbies[i].Name)
                 </div>
             }
+            </text>),
+
+            grid.Column(header: "Sex",
+            format: @<text>
+                @for (var i = 0; i < Model.Sex.Count; i++)
+                {
+                    <div class="checkbox">
+                        @Html.HiddenFor(m => Model.Sex[i].ID)
+                        @Html.HiddenFor(m => Model.Sex[i].SexName)
+                        @Html.RadioButtonFor(m => m.Students[rowNum - 1].SexID, Model.Sex[i].ID)
+                        @Html.LabelFor(m => m.Students[rowNum - 1].SexID, Model.Sex[i].SexName)
+                        
+                    </div>
+                }
             </text>)
-        ))
+                         ))
 
         <input type="submit" value="Submit" />
     </div>

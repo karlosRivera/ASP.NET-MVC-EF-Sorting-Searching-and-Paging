@@ -18,4 +18,9 @@ namespace MVCCRUDPageList.Models
         public bool Checked { get; set; }
     }
 
+    public class Sex
+    {
+        public string ID { get; set; }
+        public string SexName { get; set; }
+    }
 }
