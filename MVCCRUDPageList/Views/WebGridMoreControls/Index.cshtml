@@ -30,17 +30,14 @@
 
             grid.Column(header: "Hobbies",
             format: @<text>
-            Hobbies
-            @foreach (var hobby in Model.Hobbies)
+            @for (var i = 0; i < Model.Students.FirstOrDefault().Hobbies.Count; i++)
             {
                 <div class="checkbox">
-                    <label>
-                        @Html.HiddenFor(e => e.Hobbies)
-                        <input type="checkbox"
-                               name="Hobbies"
-                               value="@hobby.ID" /> @hobby.Name
-                    </label>
-                 </div>
+                    @Html.HiddenFor(m => m.Students[rowNum - 1].Hobbies[i].ID)
+                    @Html.HiddenFor(m => m.Students[rowNum - 1].Hobbies[i].Name)
+                    @Html.CheckBoxFor(m => m.Students[rowNum - 1].Hobbies[i].Checked)
+                    @Html.LabelFor(m => m.Students[rowNum - 1].Hobbies[i].Name, Model.Students.FirstOrDefault().Hobbies[i].Name)
+                </div>
             }
             </text>)
         ))
