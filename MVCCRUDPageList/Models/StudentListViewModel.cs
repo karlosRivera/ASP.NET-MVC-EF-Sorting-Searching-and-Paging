@@ -19,7 +19,7 @@ namespace MVCCRUDPageList.Models
             {
                 new Student
                 {
-                    ID=1,Name="Keith",CountryID=0,
+                    ID=1,Name="Keith",CountryID=0,SexID="F",
                     Hobbies= new List<Hobby>
                     {
                         new Hobby{ID=1,Name="Football",Checked=false},

@@ -1,0 +1,82 @@
+﻿@model MVCCRUDPageList.Models.StudentListViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>CREATE TABULAR UI WITH HTML TABLE</h2>
+
+@using (Html.BeginForm("Index", "HtmlTable", FormMethod.Post))
+{
+    <div class="form-group">
+        <div class="col-md-12 table-responsive">
+            <table class="table table-bordered table-hover">
+                <tr>
+                    <th>
+                        Row No
+                    </th>
+                    <th>
+                        ID
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Country
+                    </th>
+                    <th>
+                        Hobbies
+                    </th>
+                    <th>
+                        Sex
+                    </th>
+                </tr>
+                }
+                
+                @for (int x=0; x<=Model.Students.Count-1;x++)
+                {
+                    <tr>
+                        <td>
+                            <label>@(x+1)</label>
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.Students[x].ID)
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.Students[x].Name)
+                        </td>
+                        <td>
+                            @Html.DropDownListFor(m => m.Students[x].CountryID,
+                              new SelectList(Model.Country, "ID", "Name",  Model.Students[x].CountryID),
+                             "-- Select Countries--", new { id = "cboCountry", @class = "edit-mode" })
+                        </td>
+                        <td>
+                            @for (var i = 0; i < Model.Students.FirstOrDefault().Hobbies.Count; i++)
+                            {
+                                <div class="checkbox">
+                                    @Html.HiddenFor(m => m.Students[x].Hobbies[i].ID)
+                                    @Html.HiddenFor(m => m.Students[x].Hobbies[i].Name)
+                                    @Html.CheckBoxFor(m => m.Students[x].Hobbies[i].Checked)
+                                    @Html.LabelFor(m => m.Students[x].Hobbies[i].Name, Model.Students[x].Hobbies[i].Name)
+                                </div>
+                            }
+                            
+                        </td>
+                        <td>
+                            @for (var i = 0; i < Model.Sex.Count; i++)
+                            {
+                                <div class="checkbox">
+                                    @Html.HiddenFor(m => Model.Sex[i].ID)
+                                    @Html.HiddenFor(m => Model.Sex[i].SexName)
+                                    @Html.RadioButtonFor(m => m.Students[x].SexID, Model.Sex[i].ID)
+                                    @Html.LabelFor(m => m.Students[x].SexID, Model.Sex[i].SexName)
+                                </div>
+                            }
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+
+        <input type="submit" value="Submit" />
+    </div>
+}
